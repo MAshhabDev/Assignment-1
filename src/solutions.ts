@@ -46,7 +46,7 @@ function getProperty<T, K extends keyof T>(obj: T, key: K) {
   return obj[key];
 }
 
-console.log(getProperty(user, "name"));
+getProperty(user, "name");
 
 // Problem 5
 
@@ -62,8 +62,36 @@ let myBook: Book = {
   publishedYear: 2024,
 };
 
-function toggleReadStatus(book:Book) {
+function toggleReadStatus(book: Book) {
   return { ...book, isRead: true };
 }
 
-console.log(toggleReadStatus(myBook));
+toggleReadStatus(myBook);
+
+// Problem 6
+
+class Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+class Student extends Person {
+  grade: string;
+
+  constructor(name: string, age: number, grade: string) {
+    super(name, age);
+    this.grade = grade;
+  }
+
+  getDetails() {
+    return `Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`;
+  }
+}
+
+const student = new Student("Alice", 20, "A");
+student.getDetails();
