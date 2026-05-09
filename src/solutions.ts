@@ -32,4 +32,18 @@ function checkType(input: StringOrNumber) {
   }
 }
 
-console.log(checkType("Hello"));
+checkType("Hello");
+
+// Problem 4
+
+const user = {
+  id: 1,
+  name: "John Doe",
+  age: 21,
+};
+
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
+}
+
+console.log(getProperty(user,'name'))
