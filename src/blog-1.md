@@ -10,7 +10,7 @@ At first we need to know what's the definition of Any. In TypeScript Any type sa
 
 Example: 
 
-```ts
+
 let value: any = "Hello";
 
 value.toUpperCase();
