@@ -46,4 +46,24 @@ function getProperty<T, K extends keyof T>(obj: T, key: K) {
   return obj[key];
 }
 
-console.log(getProperty(user,'name'))
+console.log(getProperty(user, "name"));
+
+// Problem 5
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+}
+
+let myBook: Book = {
+  title: "TypeScript Guide",
+  author: "Jane Doe",
+  publishedYear: 2024,
+};
+
+function toggleReadStatus(book:Book) {
+  return { ...book, isRead: true };
+}
+
+console.log(toggleReadStatus(myBook));
