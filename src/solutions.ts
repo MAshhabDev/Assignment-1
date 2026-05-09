@@ -95,3 +95,21 @@ class Student extends Person {
 
 const student = new Student("Alice", 20, "A");
 student.getDetails();
+
+// Problem 7
+
+function getIntersection(num1: number[], num2: number[]) {
+  let result = [];
+
+  for (let i = 0; i < num1.length; i++) {
+    for (let j = 0; j < num2.length; j++) {
+      if (num1[i] === num2[j]) {
+        result.push(num1[i]);
+      }
+    }
+  }
+  return result;
+}
+
+const result = getIntersection([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]);
+// console.log(result);
