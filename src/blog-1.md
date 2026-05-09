@@ -1,77 +1,90 @@
 ## Introduction
 
-One Of the biggest benefit of TypeScript is that it adds type safety to JavaScript. Bt always not every type like any and unknown. The Any type turns off the type checking system of TypeScript and the Unknown type forces to verify data before use it. So now let's talk about these in more details
+One of the biggest benefits of TypeScript is that it adds type safety to JavaScript. But not every type provides the same level of safety, such as `any` and `unknown`. The `any` type turns off TypeScript’s type checking system, while the `unknown` type forces us to verify data before using it. So now let's talk about these in more detail.
 
 ---
 
 # What Is Any Type?
 
-At first we need to know what's the definition of Any. In TypeScript Any type says that there will be no need to check the type of this variable which is declare as Any.
-
-Example: 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> c3b7efc (Fixed the isssue)
-let value: any = "Hello";
-value.toUpperCase();
-value();
-
-In this code TypeScript did not show any error. Although Strings cant be called like functions the code will still compile.
-
-Now let's talk about why Any type called Type safety hole. TypeScript usually helps us to catch errors during development, but using any destroys that protection.
+At first, we need to know the definition of `any`. In TypeScript, the `any` type says that there is no need to check the type of a variable declared as `any`.
 
 Example:
 
+```ts
+let value: any = "Hello";
+
+value.toUpperCase();
+value();
+```
+
+In this code, TypeScript does not show any error. Although strings cannot be called like functions, the code will still compile.
+
+Now let's talk about why the `any` type is called a type safety hole. TypeScript usually helps us catch errors during development, but using `any` destroys that protection.
+
+Example:
+
+```ts
 function printLength(value: any) {
   console.log(value.length);
 }
-printLength(100);
 
-In here TypeScript will not give any error here. But there will be a problem at runtime because number does not have a length property. That is why any is called Type Safety Hole Because it destroy TypeScripts safety system.
+printLength(100);
+```
+
+Here, TypeScript will not give any error. But there will be a runtime problem because numbers do not have a `length` property. That is why `any` is called a **Type Safety Hole** because it destroys TypeScript’s safety system.
 
 ---
 
 # What Is Unknown?
 
-Unknown also can store any value, but it does not allow direct use. Let's see an example
+`unknown` can also store any value, but it does not allow direct use without checking the type first.
 
+Example:
+
+```ts
 let value: unknown = "TypeScript";
+
 value.toUpperCase();
+```
 
-Here TypeScript will give an error.Because TypeScript does not yet know whether value is actually a string
-And this is what makes unknown safer.
+Here, TypeScript will give an error because it does not yet know whether `value` is actually a string.
 
-# Use case Of Unknown Type
+And this is what makes `unknown` safer.
 
-1. By Using unknown it Reduces runtime errors
+# Use Case Of Unknown Type
+
+1. By using `unknown`, it reduces runtime errors
 2. Increases type safety
 3. Safer code can be written
 
 ---
 
-# What is Type Narrowing?
+# What Is Type Narrowing?
 
-Before using any variable type value, the type must be verified. This process is called Type Narrowing
+Before using any `unknown` type value, the type must be verified. This process is called **Type Narrowing**.
 
 Example:
 
+```ts
 let value: unknown = "TypeScript";
-if (typeof value === "string") {
-console.log(value.toUpperCase());
-}
 
-Here typeof value === "string" After this check, TypeScript understands that value is actually a string Then the string method can be used safely.
+if (typeof value === "string") {
+  console.log(value.toUpperCase());
+}
+```
+
+Here, after checking:
+
+```ts
+typeof value === "string"
+```
+
+TypeScript understands that `value` is actually a string. Then the string method can be used safely.
 
 ---
 
 # Conclusion
 
-<<<<<<< HEAD
-Although any and unknown may look similar, their purposes are different. Any disables TypeScript's safety system and forces unknown type checking and unknown requires proper type checking before usage.
+Although `any` and `unknown` may look similar, their purposes are different. `any` disables TypeScript's safety system, while `unknown` requires proper type checking before usage.
 
-Therefore, unknown is a much safer and recommended choice in modern TypeScript development.
-=======
-Although any and unknown may look similar, their purposes are different. Any disables TypeScript's safety system and forces unknown type checking and unknown requires proper type checking before usage. Therefore, unknown is a much safer and recommended choice in modern TypeScript development.
->>>>>>> c3b7efc (Fixed the isssue)
+Therefore, `unknown` is a much safer and recommended choice in modern TypeScript development.git 
